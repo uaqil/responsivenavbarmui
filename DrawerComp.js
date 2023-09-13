@@ -1,28 +1,25 @@
+import { Drawer, IconButton, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import React, { useState } from 'react'
-import  { IconButton, List, ListItemButton, ListItemIcon,Drawer, ListItemText } from '@mui/material'
-import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
-
-const DrawerComp = ({links}) => {
-	const [open, setOpen]=useState(false)
+import MenuIcon from '@mui/icons-material/Menu';
+const Pages = ['products','services','aboutus','services','Login','LogOut']
+const DrawerComp = () => {
+	const [openDrawer,setOpenDrawer]=useState(false)
   return (
 	<>
-	  <Drawer PaperProps={{
-		sx: { backgroundColor: 'rgba(0,0,0,1)' }
-	  }} open={open} onClose={()=> setOpen(false) }>
-	  <List>
-		{links.map((link, index) => (
-			<ListItemButton onClick={() => setOpen(false) } key={'index'} divider>
+	  <Drawer open={openDrawer} onClose={()=>setOpenDrawer(false)}>
+		<List>
+			{Pages.map((page,index)=> (
+							<ListItemButton onClick={()=> setOpenDrawer(false)} key={index}>
 				<ListItemIcon>
-					<ListItemText sx={{color:'white'}}>
-						{link}
-					</ListItemText>
+					<ListItemText>{page}</ListItemText>
 				</ListItemIcon>
 			</ListItemButton>
-		))}
-	  </List>
+			))}
+
+		</List>
 	  </Drawer>
-	  <IconButton sx={{marginLeft:'auto', color:'white'}} onClick={() => setOpen(!open) }>
-		<MenuTwoToneIcon />
+	  <IconButton sx={{color:'white', marginLeft:'auto'}} onClick={()=> setOpenDrawer(!openDrawer)}>
+		<MenuIcon></MenuIcon>
 	  </IconButton>
 	</>
   )

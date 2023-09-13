@@ -1,13 +1,10 @@
 import React from 'react'
-
-import Navbar from './components/Navbar'
-const linksArray = ['Products', 'Services', 'Overview', 'Contact Us']
+import Header from './Header'
 
 const App = () => {
   return (
     <div>
-      <Navbar links={linksArray}></Navbar>
-      
+      <Header />
     </div>
   )
 }
